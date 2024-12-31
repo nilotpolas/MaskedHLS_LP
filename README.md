@@ -298,7 +298,7 @@ Design is balanced.
       This will generate the plots and the TVLA results in the same folder.
       
 We welcome queries and feedback. Please feel free to reach out to Nilotpola Sarma at s.nilotpola@iitg.ac.in.
-Apart from the authors, this code has been majorly contributed by : ([Sujeet Narayan Kamble](https://github.com/SujeetKamble120)).
+Apart from the authors, this code has been majorly contributed by : [Sujeet Narayan Kamble](https://github.com/SujeetKamble120).
 If you use this tool in your work, please cite our paper:
 
 **MaskedHLS: Domain-Specific High-Level Synthesis of Masked Cryptographic Designs**  
