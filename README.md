@@ -198,104 +198,105 @@ Design is balanced.
 
   
 3. **TVLA - analysis**: Automated scripts to be used after the design compiler is used to generate netlist.
-   
-    Use design compiler to generate the netlist: 
-    **Steps for Netlist Generation:**
-    
-        1. Given that RTL output from MaskedHLS_LP is present_hpc2.v
-    
-        2. run:
-        
-           ```
-           dc_shell -f dc_script.tcl 
-           ```
-           will generate present_hpc2.dc.v,file1.sdc, sbox.area, sbox.timing, sbox.power (make sure all the paths are correct in dc_script.tcl file)
-          
-    
-    Steps for TVLA: 
-    
-    **Tools requried: Synopsys PrimeTime, Synopsys Design Compiler, Synopsys WaveView**
-    
-        1.  a. Remove unnecessary files (you can write a script for it : cleanup.sh):
-                  ```
-                  bash cleanup.sh 
-                  ```
-          
-             b. **Replace the value of the variables in the file in path** 
-            
-                   ```
-                   MaskedHLS_LP-master/src/SecurityAnalysis/PRESENT/5cycle/hpc2/input_generator.py
-                   ```
-                  parameter latency = 5; (design latency)
-                  parameter N = x; // use x from one of the values in following table
-                  
-                  these values are only for PRESENT for 5 cycles (hpc1, hpc2)
-                  /---------------------------------------------\
-                  | Picoseconds(ps)|  N   |  3N  |    Traces    |
-                  ----------------------------------------------
-                  |      300       | 166  | 498  |      82k     |
-                  |      275       | 181  | 543  |      98k     |
-                  |      240       | 208  | 624  |     129k     |
-                  |      225       | 222  | 666  |     147k     |
-                  |      215       | 232  | 696  |     161k     |
-                  |      175       | 285  | 855  |     243k     |
-                  |       85       | 588  | 1764 |   103.7k     |
-                  |       75       | 666  | 1998 |     133k     |
-                  \---------------------------------------------/
-    
-              
-              c. **Run input generator** 
-          
-                      ```
-                      python3 input_generator.py
-                      ```
-    
-        2. **Run vlogan** 
-        
-              ```
-              vlogan -full64 tsl18fs120_scl.v present_hpc2.dc.v present_tb.v 
-              ```
-    
-        3. **Run vcs**
-        
-              ```
-              vcs -full64 -debug_all present_tb  (this command will generate simv executable file)
-              ```
-        
-        4. **Run simv**
-        
-              ```
-              ./simv > simv_output.txt  (generate sbox_vcd.vcd file, that is used in px_sbox.tcl)
-              ```
-      
-        5. **Run primetime (make sure all paths and files name are correct)**
-        
-              ```
-              pt_shell -f px_sbox.tcl 
-              ```
-            
-            this generates sbox_hpc2.fsdb file which we need run in custom waveview to get power traces 
-         
-    
-        6.  **Open traces using waveview**
-        
-              ```
-              wv sbox_hpc2.fsdb (this command will open custom waveview) 
-              ```
-            
-        7. *Collect power traces in csv format with value in ps corresponding to x in table, 
-              for example for N - 166, it will be traces_300ps.csv
-              do this for 300,275,240,225,115,215,175,85,75 ps.csv for that start from step 1 
-    
-        8. **Download present_hpc2_300ps.csv to local and run file:**
-              * change file_num = hpc2 (or gadget concerned) in tvla_parser_2d.py
-      
-        9. **Run TVLA**
-         
-             ```
-             tvla_parser_2d.py
-             ```
-             It will generate the plots and the tvla results in the same folder.
+
+   Use design compiler to generate the netlist:  
+   **Steps for Netlist Generation:**
+
+   1. Given that RTL output from MaskedHLS_LP is `present_hpc2.v`.
+
+   2. Run:
+
+      ```bash
+      dc_shell -f dc_script.tcl
+      ```
+      This will generate `present_hpc2.dc.v`, `file1.sdc`, `sbox.area`, `sbox.timing`, `sbox.power` (make sure all the paths are correct in the `dc_script.tcl` file).
+
+   **Steps for TVLA:**
+
+   **Tools required: Synopsys PrimeTime, Synopsys Design Compiler, Synopsys WaveView**
+
+   1. a. Remove unnecessary files (you can write a script for it: `cleanup.sh`):
+
+         ```bash
+         bash cleanup.sh
+         ```
+
+      b. **Replace the value of the variables in the file in the path:**
+
+         ```bash
+         MaskedHLS_LP-master/src/SecurityAnalysis/PRESENT/5cycle/hpc2/input_generator.py
+         ```
+         - `parameter latency = 5;` (design latency)
+         - `parameter N = x;` // use `x` from one of the values in the following table
+
+         These values are only for PRESENT for 5 cycles (hpc1, hpc2):  
+
+         ```
+         /---------------------------------------------\
+         | Picoseconds(ps)|  N   |  3N  |    Traces    |
+         ----------------------------------------------
+         |      300       | 166  | 498  |      82k     |
+         |      275       | 181  | 543  |      98k     |
+         |      240       | 208  | 624  |     129k     |
+         |      225       | 222  | 666  |     147k     |
+         |      215       | 232  | 696  |     161k     |
+         |      175       | 285  | 855  |     243k     |
+         |       85       | 588  | 1764 |   103.7k     |
+         |       75       | 666  | 1998 |     133k     |
+         \---------------------------------------------/
+         ```
+
+      c. **Run input generator:**
+
+         ```bash
+         python3 input_generator.py
+         ```
+
+   2. **Run vlogan**:
+
+      ```bash
+      vlogan -full64 tsl18fs120_scl.v present_hpc2.dc.v present_tb.v
+      ```
+
+   3. **Run vcs**:
+
+      ```bash
+      vcs -full64 -debug_all present_tb  # This command will generate simv executable file.
+      ```
+
+   4. **Run simv**:
+
+      ```bash
+      ./simv > simv_output.txt  # Generates sbox_vcd.vcd file, used in px_sbox.tcl.
+      ```
+
+   5. **Run primetime** (make sure all paths and file names are correct):
+
+      ```bash
+      pt_shell -f px_sbox.tcl
+      ```
+      This generates `sbox_hpc2.fsdb` file, which we need to open in custom waveview to get power traces.
+
+   6. **Open traces using waveview**:
+
+      ```bash
+      wv sbox_hpc2.fsdb  # This command will open custom waveview.
+      ```
+
+   7. *Collect power traces in CSV format with values in ps corresponding to x in the table.*  
+      For example, for `N = 166`, it will be `traces_300ps.csv`.  
+      Do this for `300, 275, 240, 225, 215, 175, 85, 75 ps` by starting from step 1.
+
+   8. **Download `present_hpc2_300ps.csv` to local and run the file:**  
+      Change `file_num = hpc2` (or gadget concerned) in `tvla_parser_2d.py`.
+
+   9. **Run TVLA**:
+
+      ```bash
+      python3 tvla_parser_2d.py
+      ```
+      This will generate the plots and the TVLA results in the same folder.
+
 
 If you use this tool in your work, please cite our paper:
 
