@@ -296,9 +296,18 @@ Design is balanced.
       python3 tvla_parser_2d.py
       ```
       This will generate the plots and the TVLA results in the same folder.
-      
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Feedback and Acknowledgment
+
 We seek to improve the usability and expand the features in our tool. Please feel free to reach out to Nilotpola Sarma at s.nilotpola@iitg.ac.in with feedback and queries.
 Apart from the authors, this code has been majorly contributed by : [Sujeet Narayan Kamble](https://github.com/SujeetKamble120).
+
+## Citation
+
 If you use this tool in your work, please cite our paper:
 
 **MaskedHLS: Domain-Specific High-Level Synthesis of Masked Cryptographic Designs**  
