@@ -1,6 +1,6 @@
 # Overview of MaskedHLS
 
-**MaskedHLS** is a domain-specific high-level synthesis tool designed to aid in the automated generation of secure and efficient gadget-based masked cryptographic hardware implementations from their masked C versions. It incorporates the following features:
+**MaskedHLS** is a domain-specific high-level synthesis tool designed to aid in the automated generation of secure and optimized gadget-based masked cryptographic hardware implementations from their masked C versions. It incorporates the following features:
 
 ## Key Features
 1. **High-Level Synthesis**  
