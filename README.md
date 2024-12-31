@@ -163,8 +163,7 @@ Design is balanced.
   MaskedHLS_LP-master/src/graph.png
   ```
   Note: Doing this for bigger designs (AES) is not scalable due to the screen being unable to render such a huge graph.
-
-  
+ 
 3. **TVLA - analysis**: Automated scripts to be used after the design compiler is used to generate netlist.
    Example: 
 Use design compiler to generate the netlist: 
@@ -187,7 +186,7 @@ Steps for TVLA:
         b. **Replace the value of the variables in the file in path** 
         
          ```
-         /home/nilotpola/Desktop/ESSC/MaskedHLS_LP-master/src/SecurityAnalysis/PRESENT/5cycle/hpc2/input_generator.py
+         /MaskedHLS_LP-master/src/SecurityAnalysis/PRESENT/5cycle/hpc2/input_generator.py
          ```
 
           parameter latency = 5; (design latency)
@@ -248,13 +247,14 @@ Steps for TVLA:
         wv sbox_hpc2.fsdb (this command will open custom waveview) 
         ```
         
-    7. *Collect power traces in csv format with value in ps corresponding to x in table, 
+    7. **Collect power traces in csv format with value in ps corresponding to x in table**, 
+    
         for example for N - 166, it will be traces_300ps.csv
         do this for 300,275,240,225,115,215,175,85,75 ps.csv for that start from step 1 
-
+        
     8. **Download present_hpc2_300ps.csv to local and run file:**
-        * change file_num = hpc2 (or gadget concerned) in tvla_parser_2d.py
-
+    
+        * change file_num = hpc2 (or gadget concerned) in tvla_parser_2d.py*
    9. **Run TVLA**
        
        ```
