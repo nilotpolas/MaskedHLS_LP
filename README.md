@@ -1,3 +1,35 @@
+# Overview of MaskedHLS
+
+**MaskedHLS** is a domain-specific high-level synthesis tool designed to aid in the automated generation of secure and efficient masked cryptographic hardware implementations. It incorporates the following features:
+
+## Key Features
+1. **High-Level Synthesis**  
+   Converts high-level cryptographic designs (e.g., C programs) into Register-Transfer Level (RTL) representations, focusing on mimimizing registers via low-hanging latency optimizations in hardware masked designs secure against power side-channel attacks.
+
+2. **Masking and Balancing Verification**
+   - Ensures lowest possible latency given the set of gadgets used to mask the high-level code.
+   - Automatically verifies whether the generated RTL design is register balanced.
+
+4. **Customizable Parameters**  
+   - Accepts various user-defined parameters such as bit width, input file, and balancing checks, enabling flexible design exploration.
+
+5. **Functional Verification**  
+   Provides support for simulation-based verification to ensure functional correctness of the generated designs using tools like Icarus Verilog.
+
+6. **Security Analysis**  
+   Offers a pipeline for TVLA (Test Vector Leakage Assessment) to analyze the security of the design after synthesis steps.
+
+7. **Graphical Analysis**  
+   Supports visualization of the Abstract Syntax Tree (AST) and Data Flow Graph (DFG) at various stages of the synthesis process for debugging and analysis.
+
+## Applications
+MaskedHLS is primarily designed for the cryptographic hardware community. It is particularly useful for:
+- Generating secure S-box designs for AES, PRESENT, and other cryptographic algorithms.
+- Automating the implementation of hardware masking techniques at C level.
+
+## Why MaskedHLS?
+The tool reduces the manual effort involved in designing, implementing, and verifying masked cryptographic hardware while ensuring high efficiency and strong side-channel resistance. MaskedHLS bridges the gap between high-level design and secure hardware implementation with a focus on seamless design-space exploration.
+
 # Instructions to Install and Execute the Tool
 ## Installing the dependencies
 
