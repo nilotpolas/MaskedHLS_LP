@@ -166,100 +166,97 @@ Design is balanced.
 
   
 3. **TVLA - analysis**: Automated scripts to be used after the design compiler is used to generate netlist.
-4. 
-   Example:
    
-Use design compiler to generate the netlist: 
-**Steps for Netlist Generation:**
-
-    1. Given that RTL output from MaskedHLS_LP is present_hpc2.v
-
-    2. run:
-    
-       ```
-       dc_shell -f dc_script.tcl 
-       ```
-       will generate present_hpc2.dc.v,file1.sdc, sbox.area, sbox.timing, sbox.power (make sure all the paths are correct in dc_script.tcl file)
+  Use design compiler to generate the netlist: 
+  **Steps for Netlist Generation:**
+  
+      1. Given that RTL output from MaskedHLS_LP is present_hpc2.v
+  
+      2. run:
       
-
-Steps for TVLA: 
-
-**Tools requried: Synopsys PrimeTime, Synopsys Design Compiler, Synopsys WaveView**
-
-    1.  a. bash cleanup.sh (to remove unnecessary files)
-    
-        b. **Replace the value of the variables in the file in path** 
-        
          ```
-         /home/nilotpola/Desktop/ESSC/MaskedHLS_LP-master/src/SecurityAnalysis/PRESENT/5cycle/hpc2/input_generator.py
+         dc_shell -f dc_script.tcl 
          ```
-
-          parameter latency = 5; (design latency)
-          parameter N = x; // use x from one of the values in following table
+         will generate present_hpc2.dc.v,file1.sdc, sbox.area, sbox.timing, sbox.power (make sure all the paths are correct in dc_script.tcl file)
+        
+  
+  Steps for TVLA: 
+  
+  **Tools requried: Synopsys PrimeTime, Synopsys Design Compiler, Synopsys WaveView**
+  
+      1.  a. bash cleanup.sh (to remove unnecessary files)
+      
+           b. **Replace the value of the variables in the file in path** 
           
-          these values are only for PRESENT for 5 cycles (hpc1, hpc2)
-          /---------------------------------------------\
-          | Picoseconds(ps)|  N   |  3N  |    Traces    |
-          ----------------------------------------------
-          |      300       | 166  | 498  |      82k     |
-          |      275       | 181  | 543  |      98k     |
-          |      240       | 208  | 624  |     129k     |
-          |      225       | 222  | 666  |     147k     |
-          |      215       | 232  | 696  |     161k     |
-          |      175       | 285  | 855  |     243k     |
-          |       85       | 588  | 1764 |   103.7k     |
-          |       75       | 666  | 1998 |     133k     |
-          \---------------------------------------------/
-
+           ```
+           MaskedHLS_LP-master/src/SecurityAnalysis/PRESENT/5cycle/hpc2/input_generator.py
+           ```
+            parameter latency = 5; (design latency)
+            parameter N = x; // use x from one of the values in following table
+            
+            these values are only for PRESENT for 5 cycles (hpc1, hpc2)
+            /---------------------------------------------\
+            | Picoseconds(ps)|  N   |  3N  |    Traces    |
+            ----------------------------------------------
+            |      300       | 166  | 498  |      82k     |
+            |      275       | 181  | 543  |      98k     |
+            |      240       | 208  | 624  |     129k     |
+            |      225       | 222  | 666  |     147k     |
+            |      215       | 232  | 696  |     161k     |
+            |      175       | 285  | 855  |     243k     |
+            |       85       | 588  | 1764 |   103.7k     |
+            |       75       | 666  | 1998 |     133k     |
+            \---------------------------------------------/
+  
+            
+            c. **Run input generator** 
           
-        c. **Run input generator** 
-        
-        ```
-        python3 input_generator.py
-        ```
-        
-
-    2. **Run vlogan** 
-    
-        ```
-        vlogan -full64 tsl18fs120_scl.v present_hpc2.dc.v present_tb.v 
-        ```
-
-    3. **Run vcs**
-    
-        ```
-        vcs -full64 -debug_all present_tb  (this command will generate simv executable file)
-        ```
-    
-    4. **Run simv**
-    
-        ```
-        ./simv > simv_output.txt  (generate sbox_vcd.vcd file, that is used in px_sbox.tcl)
-        ```
-
-    5. **Run primetime (make sure all paths and files name are correct)**
-    
-        ```
-        pt_shell -f px_sbox.tcl 
-        ```
-        
-        this generates sbox_hpc2.fsdb file which we need run in custom waveview to get power traces 
-     
-
-    6.  **Open traces using waveview**
-    
-        ```
-        wv sbox_hpc2.fsdb (this command will open custom waveview) 
-        ```
-        
-    7. *Collect power traces in csv format with value in ps corresponding to x in table, 
-        for example for N - 166, it will be traces_300ps.csv
-        do this for 300,275,240,225,115,215,175,85,75 ps.csv for that start from step 1 
-
-    8. **Download present_hpc2_300ps.csv to local and run file:**
-        * change file_num = hpc2 (or gadget concerned) in tvla_parser_2d.py
-
-   9. **Run TVLA**
+            ```
+            python3 input_generator.py
+            ```
+          
+  
+      2. **Run vlogan** 
+      
+          ```
+          vlogan -full64 tsl18fs120_scl.v present_hpc2.dc.v present_tb.v 
+          ```
+  
+      3. **Run vcs**
+      
+          ```
+          vcs -full64 -debug_all present_tb  (this command will generate simv executable file)
+          ```
+      
+      4. **Run simv**
+      
+          ```
+          ./simv > simv_output.txt  (generate sbox_vcd.vcd file, that is used in px_sbox.tcl)
+          ```
+  
+      5. **Run primetime (make sure all paths and files name are correct)**
+      
+          ```
+          pt_shell -f px_sbox.tcl 
+          ```
+          
+          this generates sbox_hpc2.fsdb file which we need run in custom waveview to get power traces 
+       
+  
+      6.  **Open traces using waveview**
+      
+          ```
+          wv sbox_hpc2.fsdb (this command will open custom waveview) 
+          ```
+          
+      7. *Collect power traces in csv format with value in ps corresponding to x in table, 
+          for example for N - 166, it will be traces_300ps.csv
+          do this for 300,275,240,225,115,215,175,85,75 ps.csv for that start from step 1 
+  
+      8. **Download present_hpc2_300ps.csv to local and run file:**
+          * change file_num = hpc2 (or gadget concerned) in tvla_parser_2d.py
+  
+      9. **Run TVLA**
        
        ```
        tvla_parser_2d.py
