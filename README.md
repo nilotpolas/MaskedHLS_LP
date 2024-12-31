@@ -264,3 +264,22 @@ Design is balanced.
              tvla_parser_2d.py
              ```
              It will generate the plots and the tvla results in the same folder.
+
+If you use this tool in your work, please cite our paper:
+
+**MaskedHLS: Domain-Specific High-Level Synthesis of Masked Cryptographic Designs**  
+Nilotpola Sarma, Anuj Singh Thakur, and Chandan Karfa  
+Accepted at CASES 2024.  
+
+BibTeX:
+```bibtex
+@ARTICLE{10745861,
+  author={Sarma, Nilotpola and Thakur, Anuj Singh and Karfa, Chandan},
+  journal={IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems}, 
+  title={MaskedHLS: Domain-Specific High-Level Synthesis of Masked Cryptographic Designs}, 
+  year={2024},
+  volume={43},
+  number={11},
+  pages={3973-3984},
+  keywords={Integrated circuits;Design automation;Side-channel attacks;Hardware;Software;Registers;Optimization;High level synthesis;High-level synthesis (HLS);masking;power side-channel security;retiming},
+  doi={10.1109/TCAD.2024.3447223}}
