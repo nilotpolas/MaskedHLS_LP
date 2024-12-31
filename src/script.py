@@ -1,3 +1,21 @@
+# Copyright (c) 2024 AVS LAB, IIT Guwahati
+# All rights reserved.
+# 
+# Authors:
+# Chandan Karfa, Nilotpola Sarma
+# 
+# This software is licensed under the terms of the MIT License.
+# See the LICENSE file for details.
+#
+# For queries or feedback, please contact:
+# Nilotpola Sarma (s.nilotpola@iitg.ac.in)
+# 
+# This code is provided "as is" without warranty of any kind, express or implied,
+# including but not limited to the warranties of merchantability, fitness for a particular
+# purpose, and noninfringement. In no event shall the authors or copyright holders be
+# liable for any claim, damages, or other liability, whether in an action of contract,
+# tort, or otherwise, arising from, out of, or in connection with the software or the use
+# or other dealings in the software.
 import subprocess
 import sys
 import json
