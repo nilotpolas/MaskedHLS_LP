@@ -303,7 +303,8 @@ If you use this tool in your work, please cite our paper:
 
 **MaskedHLS: Domain-Specific High-Level Synthesis of Masked Cryptographic Designs**  
 Nilotpola Sarma, Anuj Singh Thakur, and Chandan Karfa  
-Presented at CASES 2024 and ESSC 2024 as part of ESWEEK 2024.  
+Presented at the INTERNATIONAL CONFERENCE ON COMPILERS, ARCHITECTURES, AND SYNTHESIS FOR EMBEDDED SYSTEMS 2024 and 
+Embedded System Software Competition 2024 as part of ESWEEK 2024.  
 
 BibTeX:
 ```bibtex
