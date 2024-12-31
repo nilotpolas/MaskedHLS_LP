@@ -296,7 +296,8 @@ Design is balanced.
       python3 tvla_parser_2d.py
       ```
       This will generate the plots and the TVLA results in the same folder.
-
+      
+We welcome queries and feedback. Please feel free to reach out to Nilotpola Sarma at s.nilotpola@iitg.ac.in.
 
 If you use this tool in your work, please cite our paper:
 
@@ -317,4 +318,4 @@ BibTeX:
   keywords={Integrated circuits;Design automation;Side-channel attacks;Hardware;Software;Registers;Optimization;High level synthesis;High-level synthesis (HLS);masking;power side-channel security;retiming},
   doi={10.1109/TCAD.2024.3447223}}
 
-We welcome queries and feedback. Please feel free to reach out to Nilotpola Sarma at s.nilotpola@iitg.ac.in.
+
