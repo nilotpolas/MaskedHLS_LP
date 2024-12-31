@@ -316,3 +316,5 @@ BibTeX:
   pages={3973-3984},
   keywords={Integrated circuits;Design automation;Side-channel attacks;Hardware;Software;Registers;Optimization;High level synthesis;High-level synthesis (HLS);masking;power side-channel security;retiming},
   doi={10.1109/TCAD.2024.3447223}}
+
+We welcome queries and feedback. Please feel free to reach out to Nilotpola Sarma at s.nilotpola@iitg.ac.in.
