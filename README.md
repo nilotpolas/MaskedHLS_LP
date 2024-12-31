@@ -297,7 +297,7 @@ Design is balanced.
       ```
       This will generate the plots and the TVLA results in the same folder.
       
-We welcome queries and feedback. Please feel free to reach out to Nilotpola Sarma at s.nilotpola@iitg.ac.in.
+We seek to improve the usability and expand the features in our tool. Please feel free to reach out to Nilotpola Sarma at s.nilotpola@iitg.ac.in with feedback and queries.
 Apart from the authors, this code has been majorly contributed by : [Sujeet Narayan Kamble](https://github.com/SujeetKamble120).
 If you use this tool in your work, please cite our paper:
 
