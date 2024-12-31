@@ -109,15 +109,15 @@ Design is balanced.
    **Step2: Write a testbench file**
     We have testbenches for the AES and PRESENT S-boxes:
    ```
-   AutoSec-master/src/FunctionalCorrectness/PRESENT/present_tb.v
+   MaskedHLS_LP-master/src/FunctionalCorrectness/PRESENT/present_tb.v
    ```
    ```
-   AutoSec-master/src/FunctionalCorrectness/AES/aes_tb.v
+   MaskedHLS_LP-master/src/FunctionalCorrectness/AES/aes_tb.v
    ```
     **Step3: Generate the simulation input files**
    The input generator code generates the input simulation files: 
    ```
-   AutoSec-master/src/FunctionalCorrectness/input_generator.py
+   MaskedHLS_LP-master/src/FunctionalCorrectness/input_generator.py
    ```
    Run it using:
    ```
@@ -148,7 +148,7 @@ Design is balanced.
     We can print the AST after dummy node insertion (or at any step in the algorithm by re-using the same function) by uncommenting line 62 in:
    
   ```
-  AutoSec-master/src/RegBalancer/src/main.py
+  MaskedHLS_LP-master/src/RegBalancer/src/main.py
   ```
 
   the line is: 
@@ -160,19 +160,22 @@ Design is balanced.
   The graph will be generated at:
   
   ```
-  AutoSec-master/src/graph.png
+  MaskedHLS_LP-master/src/graph.png
   ```
   Note: Doing this for bigger designs (AES) is not scalable due to the screen being unable to render such a huge graph.
 
   
 3. **TVLA - analysis**: Automated scripts to be used after the design compiler is used to generate netlist.
-   Example: 
+4. 
+   Example:
+   
 Use design compiler to generate the netlist: 
 **Steps for Netlist Generation:**
 
-    1. Given that RTL output from AutoSec is present_hpc2.v
+    1. Given that RTL output from MaskedHLS_LP is present_hpc2.v
 
     2. run:
+    
        ```
        dc_shell -f dc_script.tcl 
        ```
@@ -180,6 +183,7 @@ Use design compiler to generate the netlist:
       
 
 Steps for TVLA: 
+
 **Tools requried: Synopsys PrimeTime, Synopsys Design Compiler, Synopsys WaveView**
 
     1.  a. bash cleanup.sh (to remove unnecessary files)
@@ -187,7 +191,7 @@ Steps for TVLA:
         b. **Replace the value of the variables in the file in path** 
         
          ```
-         /home/nilotpola/Desktop/ESSC/AutoSec-master/src/SecurityAnalysis/PRESENT/5cycle/hpc2/input_generator.py
+         /home/nilotpola/Desktop/ESSC/MaskedHLS_LP-master/src/SecurityAnalysis/PRESENT/5cycle/hpc2/input_generator.py
          ```
 
           parameter latency = 5; (design latency)
