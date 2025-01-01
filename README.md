@@ -310,7 +310,7 @@ Apart from the authors, this code has been majorly contributed by : [Sujeet Nara
 
 If you use this tool in your work, please cite our paper:
 
-**MaskedHLS: Domain-Specific High-Level Synthesis of Masked Cryptographic Designs**  
+**[MaskedHLS: Domain-Specific High-Level Synthesis of Masked Cryptographic Designs](https://ieeexplore.ieee.org/abstract/document/10745861)**  
 Nilotpola Sarma, Anuj Singh Thakur, and Chandan Karfa  
 Presented at the INTERNATIONAL CONFERENCE ON COMPILERS, ARCHITECTURES, AND SYNTHESIS FOR EMBEDDED SYSTEMS 2024 ([Best Paper Candidate](https://2024.esweek.org/awards-2024/#:~:text=MaskedHLS%3A%20Domain%2DSpecific%20High%2DLevel%20Synthesis%20of%20Masked%20Cryptographic%20Designs%0ANilotpola%20Sarma%20%28Indian%20Institute%20of%20Technology%20Guwahati%29%2C%20Anuj%20Singh%20Thakur%20%28Indian%20Institute%20of%20Technology%20Guwahati%29%2C%20and%20Chandan%20Karfa%20%28Indian%20Institute%20of%20Technology%20Guwahati%29)) and 
 Embedded System Software Competition 2024 as part of ESWEEK 2024.  
